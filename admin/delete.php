@@ -1,4 +1,11 @@
 <?php
+session_start();
+// Check authentication
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header('Location: /admin/login.php');
+    exit;
+}
+
 require_once '../includes/db.php';
 
 // Check if ID is provided

@@ -1,4 +1,10 @@
 <?php
+session_start();
+// Check authentication
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header('Location: /admin/login.php');
+    exit;
+}
 require_once '../includes/db.php';
 
 // Get all products
@@ -8,10 +14,16 @@ $products = $stmt->fetchAll();
 include '../includes/header.php';
 ?>
 
+
 <div class="admin-header">
     <h2 class="admin-title">Product Management</h2>
-    <a href="/admin/add.php" class="btn btn-success">Add New Product</a>
+    <div class="admin-actions">
+        <a href="/admin/dashboard.php" class="btn">Dashboard</a>
+        <a href="/admin/add.php" class="btn btn-success">Add New Product</a>
+        <a href="/admin/logout.php" class="btn btn-danger">Logout</a>
+    </div>
 </div>
+
 
 <?php if (empty($products)): ?>
     <p>No products found.</p>

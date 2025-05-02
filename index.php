@@ -22,6 +22,23 @@ if (isset($_GET['id'])) {
     $product = $stmt->fetch();
 }
 
+// Get search query if set
+$search = isset($_GET['search']) ? trim($_GET['search']) : null;
+
+// Prepare query based on category filter and search
+if ($category && $search) {
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE category = ? AND (name LIKE ? OR description LIKE ?)");
+    $stmt->execute([$category, "%$search%", "%$search%"]);
+} elseif ($category) {
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE category = ?");
+    $stmt->execute([$category]);
+} elseif ($search) {
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE name LIKE ? OR description LIKE ?");
+    $stmt->execute(["%$search%", "%$search%"]);
+} else {
+    $stmt = $pdo->query("SELECT * FROM products");
+}
+
 include 'includes/header.php';
 ?>
 
@@ -30,7 +47,7 @@ include 'includes/header.php';
     <div class="product-detail">
         <div class="product-detail-image">
             <?php if ($product['image']): ?>
-                <img src="/images/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
+                <img src="images/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
             <?php else: ?>
                 <div style="width: 100%; height: 100%; background-color: #ddd; display: flex; align-items: center; justify-content: center;">
                     <span>No Image</span>
@@ -41,7 +58,7 @@ include 'includes/header.php';
             <h2 class="product-detail-name"><?php echo htmlspecialchars($product['name']); ?></h2>
             <div class="product-detail-price">$<?php echo number_format($product['price'], 2); ?></div>
             <p class="product-detail-description"><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
-            
+
             <div class="product-meta">
                 <div class="meta-item">
                     <div class="meta-label">Category</div>
@@ -56,15 +73,16 @@ include 'includes/header.php';
                     <div class="meta-value"><?php echo htmlspecialchars($product['color']); ?></div>
                 </div>
             </div>
-            
+
             <div class="stock-info">
                 <?php if ($product['stock'] > 0): ?>
                     <p class="in-stock">In Stock (<?php echo $product['stock']; ?> available)</p>
+                    <a href="/cart.php?add&id=<?php echo $product['id']; ?>" class="btn btn-success">Add to Cart</a>
                 <?php else: ?>
                     <p class="out-of-stock">Out of Stock</p>
                 <?php endif; ?>
             </div>
-            
+
             <a href="/index.php" class="btn">Back to Products</a>
         </div>
     </div>
@@ -73,7 +91,7 @@ include 'includes/header.php';
     <div class="page-header">
         <h2><?php echo $category ? htmlspecialchars($category) . ' Shoes' : 'All Shoes'; ?></h2>
     </div>
-    
+
     <?php if (empty($products)): ?>
         <p>No products found.</p>
     <?php else: ?>
@@ -82,7 +100,7 @@ include 'includes/header.php';
                 <div class="product-card">
                     <div class="product-image">
                         <?php if ($product['image']): ?>
-                            <img src="/images/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
+                            <img src="images/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
                         <?php else: ?>
                             <div style="width: 100%; height: 100%; background-color: #ddd; display: flex; align-items: center; justify-content: center;">
                                 <span>No Image</span>
