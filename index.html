@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product - Shoe Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="/index.html">Shoe Store</a></h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/index.html?category=Running">Running</a></li>
+                    <li><a href="/index.html?category=Casual">Casual</a></li>
+                    <li><a href="/index.html?category=Formal">Formal</a></li>
+                    <li><a href="/admin/index.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <div class="admin-header">
+            <h2 class="admin-title">Delete Product</h2>
+            <a href="/admin/index.html" class="btn">Back to Products</a>
+        </div>
+
+        <div class="delete-confirmation">
+            <h3>Are you sure you want to delete this product?</h3>
+            <div class="product-info">
+                <p><strong>Name:</strong> Air Sport Runner</p>
+                <p><strong>Price:</strong> $89.99</p>
+                <p><strong>Category:</strong> Running</p>
+            </div>
+            
+            <form action="/admin/delete.html?id=1" method="POST">
+                <input type="hidden" name="confirm_delete" value="1">
+                <button type="submit" class="btn btn-danger">Yes, Delete Product</button>
+                <a href="/admin/index.html" class="btn">Cancel</a>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+           
