@@ -136,7 +136,7 @@ include '../includes/header.php';
 
 <div class="admin-header">
     <h2 class="admin-title">Edit Product</h2>
-    <a href="/admin/index.php" class="btn">Back to Products</a>
+    <a href="index.php" class="btn">Back to Products</a>
 </div>
 
 <?php if ($success): ?>
@@ -155,7 +155,7 @@ include '../includes/header.php';
     </div>
 <?php endif; ?>
 
-<form action="/admin/edit.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
+<form action="edit.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Product Name</label>
         <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required>

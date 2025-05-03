@@ -109,7 +109,7 @@ include '../includes/header.php';
 
 <div class="admin-header">
     <h2 class="admin-title">Add New Product</h2>
-    <a href="/admin/index.php" class="btn">Back to Products</a>
+    <a href="index.php" class="btn">Back to Products</a>
 </div>
 
 <?php if ($success): ?>
@@ -128,7 +128,7 @@ include '../includes/header.php';
     </div>
 <?php endif; ?>
 
-<form action="/admin/add.php" method="POST" enctype="multipart/form-data">
+<form action="admin/add.php" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Product Name</label>
         <input type="text" id="name" name="name" required>

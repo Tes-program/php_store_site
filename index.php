@@ -77,13 +77,13 @@ include 'includes/header.php';
             <div class="stock-info">
                 <?php if ($product['stock'] > 0): ?>
                     <p class="in-stock">In Stock (<?php echo $product['stock']; ?> available)</p>
-                    <a href="/cart.php?add&id=<?php echo $product['id']; ?>" class="btn btn-success">Add to Cart</a>
+                    <a href="cart.php?add&id=<?php echo $product['id']; ?>" class="btn btn-success">Add to Cart</a>
                 <?php else: ?>
                     <p class="out-of-stock">Out of Stock</p>
                 <?php endif; ?>
             </div>
 
-            <a href="/index.php" class="btn">Back to Products</a>
+            <a href="index.php" class="btn">Back to Products</a>
         </div>
     </div>
 <?php else: ?>
@@ -111,7 +111,7 @@ include 'includes/header.php';
                         <h3 class="product-name"><?php echo htmlspecialchars($product['name']); ?></h3>
                         <div class="product-price">$<?php echo number_format($product['price'], 2); ?></div>
                         <div class="product-category"><?php echo htmlspecialchars($product['category']); ?></div>
-                        <a href="/index.php?id=<?php echo $product['id']; ?>" class="btn">View Details</a>
+                        <a href="index.php?id=<?php echo $product['id']; ?>" class="btn">View Details</a>
                     </div>
                 </div>
             <?php endforeach; ?>

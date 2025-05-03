@@ -2,7 +2,7 @@
 session_start();
 // Check authentication
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header('Location: /admin/login.php');
+    header('Location: login.php');
     exit;
 }
 require_once '../includes/db.php';
@@ -24,7 +24,7 @@ include '../includes/header.php';
 
 <div class="admin-header">
     <h2 class="admin-title">Admin Dashboard</h2>
-    <a href="/admin/index.php" class="btn">Manage Products</a>
+    <a href="index.php" class="btn">Manage Products</a>
 </div>
 
 <div class="dashboard-stats">
@@ -71,7 +71,7 @@ include '../includes/header.php';
                             <?php echo $product['stock']; ?>
                         </td>
                         <td>
-                            <a href="/admin/edit.php?id=<?php echo $product['id']; ?>" class="btn">Edit</a>
+                            <a href="edit.php?id=<?php echo $product['id']; ?>" class="btn">Edit</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

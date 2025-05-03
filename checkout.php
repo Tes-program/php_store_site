@@ -94,7 +94,7 @@ include 'includes/header.php';
         
         <div class="checkout-form">
             <h3>Shipping Information</h3>
-            <form action="/checkout.php" method="POST">
+            <form action="checkout.php" method="POST">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" required>
@@ -111,7 +111,7 @@ include 'includes/header.php';
                 </div>
                 
                 <button type="submit" class="btn btn-success">Place Order</button>
-                <a href="/cart.php" class="btn">Back to Cart</a>
+                <a href="cart.php" class="btn">Back to Cart</a>
             </form>
         </div>
     </div>

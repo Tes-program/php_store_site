@@ -53,7 +53,7 @@ include '../includes/header.php';
 
 <div class="admin-header">
     <h2 class="admin-title">Delete Product</h2>
-    <a href="/admin/index.php" class="btn">Back to Products</a>
+    <a href="index.php" class="btn">Back to Products</a>
 </div>
 
 <?php if ($deleted): ?>

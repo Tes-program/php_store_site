@@ -81,7 +81,7 @@ include 'includes/header.php';
         <a href="/index.php" class="btn">Continue Shopping</a>
     </div>
 <?php else: ?>
-    <form action="/cart.php" method="POST">
+    <form action="cart.php" method="POST">
         <table class="cart-table">
             <thead>
                 <tr>
@@ -116,7 +116,7 @@ include 'includes/header.php';
                         </td>
                         <td>$<?php echo number_format($itemTotal, 2); ?></td>
                         <td>
-                            <a href="/cart.php?remove&id=<?php echo $item['id']; ?>" class="btn btn-danger">Remove</a>
+                            <a href="cart.php?remove&id=<?php echo $item['id']; ?>" class="btn btn-danger">Remove</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -132,8 +132,8 @@ include 'includes/header.php';
         
         <div class="cart-actions">
             <button type="submit" name="update" class="btn">Update Cart</button>
-            <a href="/cart.php?clear" class="btn btn-danger">Clear Cart</a>
-            <a href="/checkout.php" class="btn btn-success">Checkout</a>
+            <a href="cart.php?clear" class="btn btn-danger">Clear Cart</a>
+            <a href="checkout.php" class="btn btn-success">Checkout</a>
         </div>
     </form>
 <?php endif; ?>
